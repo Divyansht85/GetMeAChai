@@ -100,7 +100,7 @@ const PaymentPage = ({ username }) => {
         pauseOnHover
         theme="light"
       />
-      <button id="rzp-button1">Pay</button>
+      {/* <button id="rzp-button1">Pay</button> */}
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
       <div className="cover w-full relative">
         <img
@@ -120,9 +120,10 @@ const PaymentPage = ({ username }) => {
       </div>
       <div className="info flex justify-center items-center my-24 flex-col gap-2">
         <div className="font-bold text-lg">@{username}</div>
-        <div className="text-slate-400">Creating Animated art for VTT's</div>
+        <div className="text-slate-400">Let help {username} get a chai!</div>
         <div className="text-slate-400">
-          9,719 members. 82 posts. $15,450/release.
+          {payments.length} Payments . &#8377;
+          {payments.reduce((a, b) => a + b.amount, 0)} raised
         </div>
         <div className="payment flex gap-3 w-[80%] mt-11">
           <div className="supporters w-1/2 bg-slate-900 rounded-lg p-10">
