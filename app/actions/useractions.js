@@ -5,9 +5,11 @@ import User from "../models/User";
 import connectDB from "../db/connectDb";
 export const initiate = async (amount, to_username, paymentform) => {
   await connectDB();
+  let user = await User.findOne({ username: to_username });
+  const secret = user.razorpaysecret;
   var instance = new Razorpay({
-    key_id: process.env.NEXT_PUBLIC_KEY_ID,
-    key_secret: process.env.KEY_SECRET,
+    key_id: user.razorpayid,
+    key_secret: secret,
   });
 
   let options = {
@@ -27,13 +29,24 @@ export const initiate = async (amount, to_username, paymentform) => {
 export const fetchuser = async (username) => {
   await connectDB();
   let u = await User.findOne({ username: username });
-  console.log(u);
   let user = u.toObject({ flattenObjectIds: true });
   return user;
 };
 export const fetchpayments = async (username) => {
   await connectDB();
-  let p = await Payment.find({ to_user: username }).sort({ amount: -1 }).lean();
+  let p = await Payment.find({ to_user: username, done: true })
+    .sort({ amount: -1 })
+    .lean();
   return p;
 };
-
+export const updateProfile = async (data, oldusername) => {
+  await connectDB();
+  let ndata = Object.fromEntries(data);
+  if (oldusername !== ndata.username) {
+    let u = await User.findOne({ username: ndata.username });
+    if (u) {
+      return { error: "Username already exists" };
+    }
+  }
+  await User.updateOne({ email: ndata.email }, ndata);
+};
