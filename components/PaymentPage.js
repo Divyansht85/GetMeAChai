@@ -4,12 +4,12 @@
 import React, { useState, useEffect } from "react";
 import Script from "next/script";
 import { fetchuser, fetchpayments, initiate } from "@/app/actions/useractions";
-import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Bounce } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 const PaymentPage = ({ username }) => {
   const [paymentform, setPaymentform] = useState({
     name: "",
@@ -173,7 +173,8 @@ const PaymentPage = ({ username }) => {
                 onClick={() => pay(paymentform.amount)}
                 disabled={
                   paymentform.name?.length < 3 ||
-                  paymentform.message?.length < 2
+                  paymentform.message?.length < 2 ||
+                  paymentform.amount < 1
                 }
                 className="text-white bg-gradient-to-br from-purple-700 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 me-2 mb-2 py-2.5 text-center disabled:bg-slate-600 disabled:from-purple-100"
               >

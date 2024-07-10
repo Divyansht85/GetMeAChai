@@ -2,14 +2,23 @@
 import React, { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { fetchuser, updateProfile } from "@/app/actions/useractions";
+import {
+  fetchuser,
+  updateProfile,
+  fetchuserUsingMail,
+} from "@/app/actions/useractions";
+import { useSelector, useDispatch } from "react-redux";
+import { setUsername } from "@/redux/userReducer/userSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Bounce } from "react-toastify";
 const Dashboard = () => {
+  const [currentUser, setcurrentUser] = useState({});
   const { data: session, update } = useSession();
   const router = useRouter();
   const [form, setform] = useState({});
+  const dispatch = useDispatch();
+  const username = useSelector((state) => state.user.username);
   useEffect(() => {
     if (!session) {
       router.push("/login");
@@ -22,11 +31,15 @@ const Dashboard = () => {
     setform({ ...form, [e.target.name]: e.target.value });
   };
   const getData = async () => {
-    let u = await fetchuser(session.user.name.split(" ")[0]);
+    let u = await fetchuserUsingMail(session.user.email);
     setform(u);
+    setcurrentUser(u);
   };
   const handleSubmit = async (e) => {
-    let a = await updateProfile(e, session.user.name.split(" ")[0]);
+    let a = await updateProfile(e, currentUser.username);
+    if (a.success) {
+      dispatch(setUsername(Object.fromEntries(e).username));
+    }
     toast("Profile Updated", {
       position: "top-right",
       autoclose: 5000,

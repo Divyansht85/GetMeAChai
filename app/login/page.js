@@ -1,22 +1,45 @@
 "use client";
-import React from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import React, { useEffect } from "react";
+import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useSelector, useDispatch } from "react-redux";
+import { setUsername } from "@/redux/userReducer/userSlice";
+import { fetchuserUsingMail } from "../actions/useractions";
+
 const Login = () => {
   const { data: session } = useSession();
-  if (session) {
-    const router = useRouter();
-    router.push("/dashboard");
-  }
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const username = useSelector((state) => state.user.username);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (session) {
+        try {
+          const userData = await fetchuserUsingMail(session.user.email);
+          dispatch(setUsername(userData.username));
+          router.push("/dashboard");
+        } catch (error) {
+          console.error("Failed to fetch user data:", error);
+          // Handle error or redirect to an error page
+        }
+      }
+    };
+
+    fetchData();
+  }, [session,router]);
+
+  const handleSignIn = (provider) => {
+    signIn(provider);
+  };
+
   return (
     <div className="text-white pt-14 container mx-auto">
       <h1 className="font-bold text-3xl text-center">Login to your profile</h1>
       <div className="social-login-buttons">
         <div className="flex flex-col gap-2 p-10 items-center">
           <button
-            onClick={() => {
-              signIn("google");
-            }}
+            onClick={() => handleSignIn("google")}
             className="flex items-center w-64 bg-slate-50 text-black border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           >
             <svg
@@ -163,9 +186,7 @@ const Login = () => {
           </button>
 
           <button
-            onClick={() => {
-              signIn("github");
-            }}
+            onClick={() => handleSignIn("github")}
             className="flex items-center w-64 bg-slate-50 text-black border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           >
             <svg

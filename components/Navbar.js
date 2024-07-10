@@ -4,22 +4,26 @@ import React from "react";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useSelector, useDispatch } from "react-redux";
+import { setUsername } from "@/redux/userReducer/userSlice";
 const Navbar = ({ props }) => {
   const { data: session } = useSession();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const dispatch = useDispatch();
+  const username = useSelector((state) => state.user.username);
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setShowDropdown(false);
     }
   };
-
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
   return (
     <nav className="bg-gray-900 text-white flex justify-between px-4 items-center h-12">
       <Link
@@ -41,7 +45,7 @@ const Navbar = ({ props }) => {
               className="inline-flex items-center text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-2.5 m-2 py-1 text-center"
               type="button"
             >
-              Welcome {session.user.name.split(" ")[0]}
+              Menu
               <svg
                 className="w-2.5 h-2.5 ms-3"
                 aria-hidden="true"
@@ -80,7 +84,7 @@ const Navbar = ({ props }) => {
                 </li>
                 <li>
                   <Link
-                    href={`/${session.user.name.split(" ")[0]}`}
+                    href={`/${username}`}
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     Your Page

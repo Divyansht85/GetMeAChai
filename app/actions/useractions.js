@@ -32,6 +32,13 @@ export const fetchuser = async (username) => {
   let user = u.toObject({ flattenObjectIds: true });
   return user;
 };
+export const fetchuserUsingMail = async (email) => {
+  await connectDB();
+  let u = await User.findOne({ email: email });
+  let user = u.toObject({ flattenObjectIds: true });
+  return user;
+};
+
 export const fetchpayments = async (username) => {
   await connectDB();
   let p = await Payment.find({ to_user: username, done: true })
@@ -45,8 +52,16 @@ export const updateProfile = async (data, oldusername) => {
   if (oldusername !== ndata.username) {
     let u = await User.findOne({ username: ndata.username });
     if (u) {
-      return { error: "Username already exists" };
+      return { error: "Username already exists", success: false };
     }
+    await User.updateOne({ email: ndata.email }, ndata);
+    await Payment.updateMany(
+      { to_user: oldusername },
+      { to_user: ndata.username }
+    );
+    return { success: true };
+  } else {
+    await User.updateOne({ email: ndata.email }, ndata);
+    return { sucess: true };
   }
-  await User.updateOne({ email: ndata.email }, ndata);
 };

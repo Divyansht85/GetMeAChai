@@ -52,6 +52,7 @@ export const authoptions = NextAuth({
   async session({ session, user, token }) {
     const dbUser = await User.findOne({ email: session.user.email });
     session.user.name = dbUser.username;
+    session.user.username = dbUser.username;
     return session;
   },
 });
