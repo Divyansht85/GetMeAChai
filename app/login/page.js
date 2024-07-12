@@ -27,7 +27,7 @@ const Login = () => {
     };
 
     fetchData();
-  }, [session,router]);
+  }, [session, router]);
 
   const handleSignIn = (provider) => {
     signIn(provider);
@@ -35,7 +35,7 @@ const Login = () => {
 
   return (
     <div className="text-white pt-14 container mx-auto">
-      <h1 className="font-bold text-3xl text-center">Login to your profile</h1>
+      <h1 className="font-bold text-3xl text-center">Login to Get Started</h1>
       <div className="social-login-buttons">
         <div className="flex flex-col gap-2 p-10 items-center">
           <button
