@@ -138,7 +138,7 @@ const PaymentPage = ({ username }) => {
                   <span>
                     {p.name} donated{" "}
                     <span className="font-bold">&#8377;{p.amount}</span> with a
-                    message "{p.message}"
+                    message &quot;{p.message}&quot;
                   </span>
                 </li>
               ))}
