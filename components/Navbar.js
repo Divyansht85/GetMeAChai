@@ -25,13 +25,15 @@ const Navbar = ({ props }) => {
   }, []);
 
   return (
-    <nav className="bg-gray-900 text-white flex justify-between px-4 items-center h-12">
+    <nav className="bg-gray-900 text-white flex justify-between md:px-4 sm:px-1 items-center md:h-12">
       <Link
         href={"/"}
         className="logo font-bold text-lg flex justify-center items-center"
       >
         <img src="../Assets/GIFs/tea.gif" width={30} alt="" />
-        <span>Get Me A Chai!</span>
+        <span className="text-xl md:text-base my-3 md:my-0">
+          Get Me A Chai!
+        </span>
       </Link>
       <div className="relative">
         {session && (

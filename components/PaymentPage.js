@@ -108,7 +108,7 @@ const PaymentPage = ({ username }) => {
           // src="../Assets/Images/Cover.jpeg"
           src={currentUser.coverpic}
         />
-        <div className="absolute -bottom-20 right-[44%] border-2 border-white overflow-hidden rounded-full size-32">
+        <div className="absolute -bottom-20 right-[36%] sm:right-[40%] lg:right-[44%] 2xl:right-[48%] border-2 border-white overflow-hidden rounded-full size-32">
           <img
             className="rounded-full objject-cover size-32"
             width={150}
@@ -120,14 +120,16 @@ const PaymentPage = ({ username }) => {
       </div>
       <div className="info flex justify-center items-center my-24 flex-col gap-2">
         <div className="font-bold text-lg">@{username}</div>
-        <div className="text-slate-400">Let help {username} get a chai!</div>
+        <div className="text-slate-400">Lets help {username} get a chai!</div>
         <div className="text-slate-400">
           {payments.length} Payments . &#8377;
           {payments.reduce((a, b) => a + b.amount, 0)} raised
         </div>
-        <div className="payment flex gap-3 w-[80%] mt-11">
-          <div className="supporters w-1/2 bg-slate-900 rounded-lg p-10">
-            <h2 className="text-2xl font-bold my-5">To 10 Supporters</h2>
+        <div className="payment flex gap-3 w-[80%] mt-11 flex-col sm:flex-row">
+          <div className="supporters w-full sm:w-1/2 bg-slate-900 rounded-lg md:p-2">
+            <h2 className="text-2xl font-bold my-5 text-center">
+              To 10 Supporters
+            </h2>
             <ul className="mx-5">
               {payments.length == 0 && <li>No payments yet</li>}
               {payments.slice(0, 10).map((p, i) => (
@@ -142,8 +144,10 @@ const PaymentPage = ({ username }) => {
               ))}
             </ul>
           </div>
-          <div className="makepayment w-1/2 bg-slate-900 rounded-lg p-10">
-            <h2 className="text-2xl font-bold my-5">Make a Payment</h2>
+          <div className="makepayment w-full sm:w-1/2 bg-slate-900 rounded-lg p-10">
+            <h2 className="text-2xl font-bold my-5 text-center">
+              Make a Payment
+            </h2>
             <div className="flex gap-2 flex-col">
               <input
                 type="text"
@@ -176,12 +180,12 @@ const PaymentPage = ({ username }) => {
                   paymentform.message?.length < 2 ||
                   paymentform.amount < 1
                 }
-                className="text-white bg-gradient-to-br from-purple-700 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 me-2 mb-2 py-2.5 text-center disabled:bg-slate-600 disabled:from-purple-100"
+                className="text-white bg-gradient-to-br from-purple-700 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-3 w-full md:px-5 me-2 mb-2 py-2.5 text-center disabled:bg-slate-600 disabled:from-purple-100"
               >
                 Pay
               </button>
             </div>
-            <div className="flex gap-2 mt-5">
+            <div className="flex gap-2 mt-5 flex-col md:flex-row">
               <button
                 className="bg-slate-800 p-3 rounded-lg"
                 onClick={() => pay(10)}

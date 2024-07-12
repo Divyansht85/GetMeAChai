@@ -66,7 +66,7 @@ const Dashboard = () => {
         pauseOnHover
         theme="light"
       />
-      <div className="container mx-auto py-5">
+      <div className="container mx-auto py-5 px-6">
         <h1 className="text-center my-5 text-3xl font-bold">
           Welcome to your Dashboard
         </h1>

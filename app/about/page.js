@@ -3,7 +3,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="container mx-auto px-32 py-8 text-sm">
+    <div className="container mx-auto lg:px-32 px-5 py-8 text-sm">
       <h1 className="text-3xl font-semibold mb-4">About Get Me a Chai</h1>
       <p className="text-base mb-6">
         Get Me a Chai is a crowdfunding platform for creators to fund their
