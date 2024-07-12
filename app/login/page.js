@@ -13,6 +13,7 @@ const Login = () => {
   const username = useSelector((state) => state.user.username);
 
   useEffect(() => {
+    document.title = "Login - Get Me a Chai";
     const fetchData = async () => {
       if (session) {
         try {

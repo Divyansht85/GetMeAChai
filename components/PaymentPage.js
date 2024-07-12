@@ -127,10 +127,10 @@ const PaymentPage = ({ username }) => {
         </div>
         <div className="payment flex gap-3 w-[80%] mt-11">
           <div className="supporters w-1/2 bg-slate-900 rounded-lg p-10">
-            <h2 className="text-2xl font-bold my-5">Supporters</h2>
+            <h2 className="text-2xl font-bold my-5">To 10 Supporters</h2>
             <ul className="mx-5">
               {payments.length == 0 && <li>No payments yet</li>}
-              {payments.map((p, i) => (
+              {payments.slice(0, 10).map((p, i) => (
                 <li key={i} className="my-4 flex gap-2 items-center">
                   <img width={25} src="../Assets/GIFs/user.gif" />
                   <span>
