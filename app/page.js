@@ -21,7 +21,7 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="flex justify-center text-white items-center h-[44vh] flex-col gap-4 px-5 md:px-0 text-xs md:text-base">
+      <div className="flex justify-center text-white items-center h-[44vh] flex-col gap-4 md:px-5 px-0 text-xs md:text-base">
         <div className="font-bold md:text-5xl flex gap-2 justify-center items-center text-3xl">
           Get Me a Chai
           <span>
@@ -60,7 +60,7 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center my-7">
           Learn More about us
         </h2>
-        <div className="w-[90%] h-[40vh] md:w-[50%] md:h-[40vh] lg:w-[65%] lg:h-[55vh] xl:w-[50%] xl:h-[55vh]">
+        <div className="w-[90vw] md:w-[50%] md:h-[40vh] lg:w-[65%] lg:h-[55vh] xl:w-[50%] xl:h-[55vh]">
           <iframe
             className="w-full h-full"
             src="https://www.youtube.com/embed/8lFFHe5nrY8?si=Tohj2ubEavn9hAwu"

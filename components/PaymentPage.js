@@ -122,8 +122,8 @@ const PaymentPage = ({ username }) => {
         <div className="font-bold text-lg">@{username}</div>
         <div className="text-slate-400">Lets help {username} get a chai!</div>
         <div className="text-slate-400">
-          {payments.length} Payments . &#8377;
-          {payments.reduce((a, b) => a + b.amount, 0)} raised
+          <b>{payments.length}</b> Payments . &#8377;
+          <b>{payments.reduce((a, b) => a + b.amount, 0)} </b> raised
         </div>
         <div className="payment flex gap-3 w-[80%] mt-11 flex-col sm:flex-row">
           <div className="supporters w-full sm:w-1/2 bg-slate-900 rounded-lg md:p-2">

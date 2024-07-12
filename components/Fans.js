@@ -7,7 +7,7 @@ const FansSupport = () => {
       <h2 className="text-3xl font-bold text-center my-5">
         Your Fans can buy you a Chai
       </h2>
-      <div className="grid grid-cols-3 gap-2 md:gap-5 justify-items-center">
+      <div className="grid grid-cols-3 gap-3 md:gap-5 justify-items-center">
         <div className="item flex flex-col items-center justify-center">
           <img
             className="bg-slate-400 rounded-full p-2"
