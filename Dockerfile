@@ -2,15 +2,15 @@
 FROM node:18-alpine
 
 # Set environment variables
-ENV GITHUB_ID=Ov23liwNFFzaL5mOWsIW
-ENV GITHUB_SECRET=7f6ef5e51db271879ce871e9020f421f8acf8f8c
+ENV GITHUB_ID=Ov23li6pBDT7si5Ldgn0
+ENV GITHUB_SECRET=ebcc390336aed4bb31f531a5b206f86fbefa516e
 ENV NEXT_PUBLIC_KEY_ID=rzp_test_6vsm9SxNuCt2FK
 ENV KEY_SECRET=Y6aFWGKrtzzOvQ7JhP8pd22S
 ENV MONGO_DB_CONNECTION_STRING=mongodb+srv://divyansht85:CrazyDuck@cluster0.kd572g0.mongodb.net/chai?retryWrites=true&w=majority&appName=Cluster0
-ENV GOOGLE_ID=858970125984-54b3jeer5nsj7dd9jo7q28hbc6ukkjb0.apps.googleusercontent.com
-ENV GOOGLE_SECRET=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
-ENV NEXT_PUBLIC_URL=http://localhost:3000
-ENV NEXTAUTH_URL=http://localhost:3000
+ENV GOOGLE_ID=858970125984-a6pdgf0domr8fu8t5875ru1mv4mc881m.apps.googleusercontent.com
+ENV GOOGLE_SECRET=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
+ENV NEXT_PUBLIC_URL=http://ec2-3-87-15-103.compute-1.amazonaws.com
+ENV NEXTAUTH_URL=http://ec2-3-87-15-103.compute-1.amazonaws.com
 ENV NEXTAUTH_SECRET=sdf
 # Set the working directory inside the container
 WORKDIR /app
