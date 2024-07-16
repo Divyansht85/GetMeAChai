@@ -9,8 +9,8 @@ ENV KEY_SECRET=Y6aFWGKrtzzOvQ7JhP8pd22S
 ENV MONGO_DB_CONNECTION_STRING=mongodb+srv://divyansht85:CrazyDuck@cluster0.kd572g0.mongodb.net/chai?retryWrites=true&w=majority&appName=Cluster0
 ENV GOOGLE_ID=858970125984-a6pdgf0domr8fu8t5875ru1mv4mc881m.apps.googleusercontent.com
 ENV GOOGLE_SECRET=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
-ENV NEXT_PUBLIC_URL=http://ec2-3-87-15-103.compute-1.amazonaws.com
-ENV NEXTAUTH_URL=http://ec2-3-87-15-103.compute-1.amazonaws.com
+ENV NEXT_PUBLIC_URL=http://divyprojects.in
+ENV NEXTAUTH_URL=http://divyprojects.in
 ENV NEXTAUTH_SECRET=sdf
 # Set the working directory inside the container
 WORKDIR /app
