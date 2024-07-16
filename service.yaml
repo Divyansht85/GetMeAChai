@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: get-me-a-chai-service
+spec:
+  selector:
+    app: get-me-a-chai
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer

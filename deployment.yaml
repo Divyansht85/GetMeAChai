@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: get-me-a-chai
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: get-me-a-chai
+  template:
+    metadata:
+      labels:
+        app: get-me-a-chai
+    spec:
+      containers:
+      - name: get-me-a-chai
+        image: divyansht85/get-me-a-chai:aks
+        ports:
+        - containerPort: 3000
+        env:
+        - name: GITHUB_ID
+          value: "Ov23li6pBDT7si5Ldgn0"
+        - name: GITHUB_SECRET
+          value: "ebcc390336aed4bb31f531a5b206f86fbefa516e"
+        - name: NEXT_PUBLIC_KEY_ID
+          value: "rzp_test_6vsm9SxNuCt2FK"
+        - name: KEY_SECRET
+          value: "Y6aFWGKrtzzOvQ7JhP8pd22S"
+        - name: MONGO_DB_CONNECTION_STRING
+          value: "mongodb+srv://divyansht85:CrazyDuck@cluster0.kd572g0.mongodb.net/chai?retryWrites=true&w=majority&appName=Cluster0"
+        - name: GOOGLE_ID
+          value: "858970125984-a6pdgf0domr8fu8t5875ru1mv4mc881m.apps.googleusercontent.com"
+        - name: GOOGLE_SECRET
+          value: "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"
+        - name: NEXT_PUBLIC_URL
+          value: "http://divyprojects.in"
+        - name: NEXTAUTH_URL
+          value: "http://divyprojects.in"
+        - name: NEXTAUTH_SECRET
+          value: "sdf"
+      imagePullSecrets:
+      - name: dockerhub-secret
